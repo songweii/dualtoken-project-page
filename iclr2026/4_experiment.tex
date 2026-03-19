@@ -1,0 +1,112 @@
+\section{Experiments}
+\label{experiment}
+
+\input{tex/figures/gen}
+
+\subsection{Vision Tokenizer}
+\label{sec:exp_tokenizer}
+
+\textbf{Experimental Setup~~} We trained two versions of our vision tokenizers at $256 \times 256$ and $384 \times 384$ resolutions. For fair comparison with VILA-U, we adopted the same quantization strategies and pretrained weights (SigLIP-L/16-256 and SigLIP-so/14-384), yielding 256 / 729 tokens with residual depths $D=4$ / $D=8$ (whereas VILA-U uses $D=4$ / $D=16$). To test stronger backbones, we further trained on SigLIP2-so/16-256 with $D=8$, and show that our method generalizes to other backbones in Appendix.~\ref{appendix_generalizability}. All models were trained on ImageNet-1K~\citep{deng2009imagenet}, CC12M~\citep{changpinyo2021cc12m}, and 50M images from LAION-400M~\citep{schuhmann2021laion400m}.
+
+\textbf{Reconstruction~~} We measured reconstruction FID (rFID), PSNR, and SSIM on the ImageNet-1K (val). As shown in Table.\ref{tab:tokenizers}, our \ours{} achieves the highest structural similarity and the lowest rFID among various state-of-the-art dedicated methods, including Open-MAGVIT2 \citep{luo2024openmagvit2} and SBER-MoVQGAN \citep{sber2023movqgan}. This demonstrates that our method effectively mitigates the structural distortion and blurriness issues encountered by VILA-U during reconstruction.
+
+\textbf{Semantic Metrics~~} For semantic metrics, we report the Top-1 accuracy for zero-shot classification on ImageNet-1K (val), along with text-to-image and image-to-text retrieval performance (R@1) on Flickr8K.
+As shown in Table.\ref{tab:tokenizers}, our \ours{} significantly outperforms VILA-U and the latest concurrent work, UniTok, while also surpassing dedicated models like CLIP-L-14-336 in zero-shot image classification and achieves performance on par with the state-of-the-art SigLIP models.
+%, without requiring any additional stages specifically designed to enhance semantic capabilities.
+% We believe that incorporating an additional contrastive learning stage---where the shallow layers responsible for reconstruction are frozen while only the deeper layers are optimized for semantic objective---could further enhance the model's semantic performance.
+
+\input{tex/tables/llava}
+
+\textbf{Downstream Performance within LLaVA-1.5~~} Before formally introducing the performance of our unified model, we first conducted a controlled experiment to validate the effectiveness of our vision tokenizer in downstream MLLM understanding tasks within the LLaVA-1.5~\citep{liu2024llava1d5} framework. Specifically, we replace the vision encoder of LLaVA-1.5 with \ours{}, while strictly adhering to its training data and using LLaMA-2-7B~\citep{touvron2023llama} as the foundational LLM.
+As shown in Table.\ref{tab:llava} \textcolor{purple}{(a)(b)(d)}, our \ours{}, as a discrete unified vision tokenizer, outperforms VILA-U and even surpasses the original continuous SigLIP model.
+
+
+\subsection{Unified Model for Generation and Understanding}
+\label{sec:exp_llm}
+
+Building on the unified tokenizers, we further verified its potential within a unified AR framework based on Qwen-2.5-3B~\citep{yang2024qwen2d5}.
+Our training process consists of four stages: (1) Freeze the LLM and pretrain on image-caption data, training only the visual projector for multimodal alignment. (2) Unfreeze the LLM and fine-tune on visual understanding data to enhance comprehension. (3) Freeze the LLM and train only the visual heads on text-to-image data. (4) Unfreeze all components and perform joint training on a mixture of understanding, generation, and interleaved datasets.
+
+To ensure a fair comparison with VILA-U~\citep{wu2025vilau}, we additionally provide a reproduced version of VILA-U using Qwen-2.5-3B as the language backbone, trained with the same dataset and procedure as our method. % Please refer to Appendix.\ref{appendix_data} for the detailed dataset list. 
+We evaluate our model against widely used vision-language understanding benchmarks, including VQAv2 \citep{vqa_v2}, POPE \citep{POPE}, MME \citep{fu2024mme}, SEED-IMG \citep{li2023seedbench}, MMBench \citep{liu2023mmbench}, and MM-Vet \citep{yu2023mmvet}. 
+% For visual generation, we apply classifier-free guidance \citep{cfg} with a CFG value of 3.
+
+\input{tex/tables/main_table}
+
+As shown in Table.\ref{tab:main}, our \ours{} (3B) demonstrates strong understanding performance compared to other unified models and surpasses dedicated understanding models like LLaVA-NeXT and ShareGPT4V~\citep{chen2024sharegpt4v}.
+Meanwhile, as illustrated in Fig.~\ref{fig:gen_cases}, thanks to the significantly improved reconstruction quality of \ours{}, the generated images are rich in detail and structurally realistic, accurately capturing fine textures such as animal fur and other intricate patterns---effectively resolving the blurriness and distortions observed in VILA-U.
+What’s more, the generated images exhibit remarkable alignment with the text, even for long and complex prompts. This is especially evident when compared with the \textit{pix. only} method (which only predicts pixel tokens during image generation), as it often ignores important semantic content during generation---highlighting the crucial role that semantic tokens play in helping the model grasp the semantic structure of images throughout the generation process. Results on more generation benchmarks are presented in Appendix.\ref{appendix_genbench}.
+
+Beyond its impressive performance, we observed two interesting findings:
+\begin{itemize}[leftmargin=*]
+    \item \emph{Pixel tokens enhance understanding.} As shown in Table.\ref{tab:llava}~\textcolor{purple}{(a)(c)(d)}, we compared using only the semantic tokens (sem.), and a combination of semantic and pixel tokens (sem.+pcpt), concatenated along the embedding dimension to serve as visual input. Surprisingly, compared to using semantic tokens alone, jointly leveraging both semantic and pixel tokens leads to consistent improvements across various aspects, including general VQA~\citep{liu2023mmbench,fu2024mme}, hallucination detection~\citep{POPE}, and OCR-related benchmarks~\citep{textvqa,liu2024ocrbench}. Suggesting that the supplementation of high-frequency details by pixel tokens can compensate for the subtle semantic loss introduced by vector quantization.
+    \item \emph{Semantic tokens also helps to generate.} As shown in Fig.\ref{fig:gen_cases} and Table.\ref{tab:main} \textcolor{purple}{(b)}, incorporating semantic tokens into the model’s autoregressive generation process leads to more semantically aligned image generation compared to using visual appearance tokens alone. This indicates that visual semantic tokens—beyond their role in understanding tasks—can also assist the model in grasping the semantic composition of images, thereby producing outputs that better align with the intended semantics. This is also clearly reflected in the model’s performance on GenAI-Bench.
+\end{itemize}
+
+\textbf{DualToken versus dual-encoder.} Recently, some studies have adopted dual-encoder designs to obtain visual representations~\citep{huang2025illume+}. Specifically, a VQVAE-based pixel encoder and a CLIP-based semantic encoder. To address a fundamental question---why is it necessary to obtain dual visual vocabularies within a unified tokenizer rather than simply combining existing specialized encoders? we conducted an experiment using the codebook from SBER-MoVQGAN as the low-level vocabulary and a VQ-processed SigLIP as the high-level vocabulary, as illustrated in Fig.\ref{fig:frameworks}~\textcolor{purple}{(a)}.
+
+\begin{minipage}[h]{0.33\textwidth}
+    As shown in Table.\ref{tab:mjhq}, this straightforward approach leads to significantly inferior image generation performance (See Appendix.\ref{implement} for implementation details). To explain this discrepancy, we visualize the feature spaces of DualToken’s 6th and 26th layers, as well as those of MoVQGAN and SigLIP with UMAP (Fig.\ref{tab:umap}).
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.35\textwidth}
+\vspace{-0.05cm}
+    \centering
+    \captionsetup{type=table}
+    \caption{Results on the MJHQ-30K dataset~\citep{playground}.}
+    \vspace{-0.1cm}
+    \tablestyle{5pt}{1.16}
+    \resizebox{0.96\linewidth}{!}{
+        \begin{tabular}{lcccc}
+        \toprule 
+        Method & Type & Res. & FID$\downarrow$ \\
+        \midrule
+        SD-XL \citep{sdxl} & Diffusion & 1024 & 9.55 \\
+        PixArt \citep{pixart} & Diffusion & 1024 & 6.14 \\ 
+        Playground \citep{playground} & Diffusion & 1024 & 4.48 \\
+        Liquid \citep{liquid} & Autoregressive & 512 & 5.47 \\
+        Janus \citep{wu2024janus} & Autoregressive & 384 & 10.10 \\
+        LWM \citep{lwm} & Autoregressive & 256 & 17.77 \\
+        Show-o \citep{xie2024showo} & Discrete Diff. & 256 & 15.18 \\
+        VILA-U 7B \citep{wu2025vilau} & Autoregressive & 256 & 12.81 \\
+        \midrule
+        \compare{}VILA-U 3B & \compare{}Autoregressive & \compare{}256 & \compare{}15.12 \\
+        \compare{}DualToken 3B & \compare{}Autoregressive & \compare{}256 & \compare{}7.88 \\
+        \midrule
+        \compare{}\textit{Dual Encoder} & \compare{}Autoregressive & \compare{}256 & \compare{}17.55 \\
+        \bottomrule
+        \end{tabular}
+    }
+    % \vspace{-2mm}
+    \label{tab:mjhq}
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.283\textwidth}
+    \centering
+    \includegraphics[height=2.95cm]{imgs/umap.png}
+
+    \vspace{-0.15cm}
+    
+    \captionsetup{type=figure}
+    \caption{Visualized feature spaces on Imagenet-1k (val).}
+    \label{tab:umap}
+\end{minipage}
+
+As shown, while DualToken’s 6th and 26th layers yield features specialized for different purposes, they still share a largely overlapping representational space. In contrast, features from the two separate encoders (MoVQGAN and SigLIP) show significant divergence, forming clearly disjoint clusters.
+Therefore, we attribute the performance gap to the incompatibility of representational spaces between heterogeneous encoders. This mismatch imposes a burden on the downstream language model, which is forced to learn two entirely disjoint visual representation systems. This observation further highlights the simplicity and effectiveness of DualToken as a unified architectural solution.
+
+% ==== 平均特征之间的距离计算结果 ====
+% [Group 1] MoVQGAN vs SigLIP:
+%     L2 Distance:     12.5902
+%     Cosine Distance: 1.4060
+% [Group 2] DualToken Layer 6 vs Layer 26:
+%     L2 Distance:     1.5961
+%     Cosine Distance: 0.0675
+
+% ==== 图像级特征距离的平均值 ====
+% [Group 1] MoVQGAN vs SigLIP:
+%     Average L2 Distance:     22.9014
+%     Average Cosine Distance: 1.0425
+% [Group 2] DualToken Layer 6 vs Layer 26:
+%     Average L2 Distance:     2.2314
+%     Average Cosine Distance: 0.0178

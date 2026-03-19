@@ -3,530 +3,363 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="DualToken - AUTHOR_NAMES">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
+  <meta name="title" content="DualToken: Towards Unifying Visual Understanding and Generation with Dual Visual Vocabularies">
+  <meta name="description" content="DualToken unifies visual understanding and generation with dual visual vocabularies, achieving strong semantic alignment and high-fidelity reconstruction in a single autoregressive framework.">
+  <meta name="keywords" content="DualToken, visual tokenizer, multimodal large language models, visual understanding, image generation, autoregressive models, vision-language models, ICLR 2026">
+  <meta name="author" content="Wei Song, Yuran Wang, Zijia Song, Yadong Li, Zenan Zhou, Long Chen, Jianhua Xu, Jiaqi Wang, Kaicheng Yu">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
-  
-  <!-- Open Graph / Facebook -->
+
   <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
-  <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
-  <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
+  <meta property="og:site_name" content="DualToken Project Page">
+  <meta property="og:title" content="DualToken: Towards Unifying Visual Understanding and Generation with Dual Visual Vocabularies">
+  <meta property="og:description" content="A unified visual tokenizer with dual vocabularies for semantic understanding and pixel-level generation, accepted to ICLR 2026.">
+  <meta property="og:url" content="https://songweii.github.io/dualtoken-project-page/">
+  <meta property="og:image" content="https://songweii.github.io/dualtoken-project-page/static/images/teaser.png">
+  <meta property="og:image:alt" content="DualToken teaser figure">
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
+  <meta name="twitter:title" content="DualToken: Towards Unifying Visual Understanding and Generation with Dual Visual Vocabularies">
+  <meta name="twitter:description" content="Accepted to ICLR 2026. Dual visual vocabularies bridge semantic understanding and visual generation in one autoregressive model.">
+  <meta name="twitter:image" content="https://songweii.github.io/dualtoken-project-page/static/images/teaser.png">
 
-  <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <meta name="citation_title" content="DualToken: Towards Unifying Visual Understanding and Generation with Dual Visual Vocabularies">
+  <meta name="citation_author" content="Song, Wei">
+  <meta name="citation_author" content="Wang, Yuran">
+  <meta name="citation_author" content="Song, Zijia">
+  <meta name="citation_author" content="Li, Yadong">
+  <meta name="citation_author" content="Zhou, Zenan">
+  <meta name="citation_author" content="Chen, Long">
+  <meta name="citation_author" content="Xu, Jianhua">
+  <meta name="citation_author" content="Wang, Jiaqi">
+  <meta name="citation_author" content="Yu, Kaicheng">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="International Conference on Learning Representations">
+  <meta name="citation_pdf_url" content="https://songweii.github.io/dualtoken-project-page/iclr2026/iclr2026_conference.pdf">
 
-
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
-  
-  <!-- Favicon and App Icons -->
+  <meta name="theme-color" content="#101826">
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  
-  <!-- Critical CSS - Load synchronously -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
   <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
     <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   </noscript>
-  
-  <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+
+  <title>DualToken | ICLR 2026</title>
+
   <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
-  
-  <!-- Structured Data for Academic Papers -->
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
-    "headline": "PAPER_TITLE",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
+    "headline": "DualToken: Towards Unifying Visual Understanding and Generation with Dual Visual Vocabularies",
+    "description": "DualToken introduces dual visual vocabularies to disentangle semantic understanding and pixel-level generation in a unified autoregressive framework.",
     "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      }
+      {"@type": "Person", "name": "Wei Song"},
+      {"@type": "Person", "name": "Yuran Wang"},
+      {"@type": "Person", "name": "Zijia Song"},
+      {"@type": "Person", "name": "Yadong Li"},
+      {"@type": "Person", "name": "Zenan Zhou"},
+      {"@type": "Person", "name": "Long Chen"},
+      {"@type": "Person", "name": "Jianhua Xu"},
+      {"@type": "Person", "name": "Jiaqi Wang"},
+      {"@type": "Person", "name": "Kaicheng Yu"}
     ],
-    "datePublished": "2024-01-01",
+    "datePublished": "2026-01-01",
     "publisher": {
       "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
+      "name": "ICLR 2026"
     },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
-    ]
-  }
-  </script>
-  
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
+    "url": "https://songweii.github.io/dualtoken-project-page/",
+    "image": "https://songweii.github.io/dualtoken-project-page/static/images/teaser.png",
+    "keywords": ["visual tokenizer", "multimodal large language models", "visual understanding", "image generation", "autoregressive multimodal models"],
+    "isAccessibleForFree": true
   }
   </script>
 </head>
 <body>
-
-
-  <!-- Scroll to Top Button -->
   <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <!-- More Works Dropdown -->
-  <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works from Our Lab</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
-          <div class="work-info">
-            <!-- TODO: Replace with actual paper title -->
-            <h5>Paper Title 1</h5>
-            <!-- TODO: Replace with brief description -->
-            <p>Brief description of the work and its main contribution.</p>
-            <!-- TODO: Replace with venue and year -->
-            <span class="work-venue">Conference/Journal 2024</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <!-- TODO: Add more related works or remove extra items -->
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-
   <main id="main-content">
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">DualToken: Towards Unifying Visual Understanding and Generation with Dual Visual Vocabularies</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
-              <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=k0blIUIAAAAJ" target="_blank">Wei Song</a>,</span>
-                  <span class="author-block">
-                  <a href="https://scholar.google.com/citations?user=ZGq8cbIAAAAJ" target="_blank">Yuran Wang</a>,</span>
-                  <span class="author-block">
-                  <a href="https://scholar.google.com/citations?user=AN4uKEcAAAAJ" target="_blank">Zijia Song</a>,</span>
-                  <span class="author-block">
-                  <a href="https://scholar.google.com/citations?user=VLfXcYIAAAAJ" target="_blank">Yadong Li</a>,</span>
-                  <span class="author-block">
-                  <a href="https://scholar.google.com/citations?user=tZa2hzAAAAAJ" target="_blank">Zenan Zhou</a>,</span>
-                  <span class="author-block">
-                  <a href="https://long.ooo/" target="_blank">Long Chen</a>,</span>
-                  <span class="author-block">
-                  <a href="https://openreview.net/profile?id=~Xu_Jhua1" target="_blank">Jianhua Xu</a>,</span>
-                  <span class="author-block">
-                  <a href="https://myownskyw7.github.io/" target="_blank">Jiaqi Wang</a>,</span>
-                  <span class="author-block">
-                  <a href="https://www.yukaicheng.cn/" target="_blank">Kaicheng Yu</a>
-                  </span>
-                  </div>
+    <section class="hero hero-shell">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="hero-kicker">ICLR 2026</div>
+          <h1 class="title publication-title">DualToken: Towards Unifying Visual Understanding and Generation with Dual Visual Vocabularies</h1>
 
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
+          <div class="publication-authors">
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=k0blIUIAAAAJ" target="_blank" rel="noopener noreferrer">Wei Song</a><sup>1,2,3</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=ZGq8cbIAAAAJ" target="_blank" rel="noopener noreferrer">Yuran Wang</a><sup>5</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=AN4uKEcAAAAJ" target="_blank" rel="noopener noreferrer">Zijia Song</a><sup>3</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=VLfXcYIAAAAJ" target="_blank" rel="noopener noreferrer">Yadong Li</a><sup>4</sup>,</span>
+            <span class="author-block"><a href="https://scholar.google.com/citations?user=tZa2hzAAAAAJ" target="_blank" rel="noopener noreferrer">Zenan Zhou</a><sup>4</sup>,</span>
+            <span class="author-block"><a href="https://long.ooo/" target="_blank" rel="noopener noreferrer">Long Chen</a><sup>6</sup>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Xu_Jhua1" target="_blank" rel="noopener noreferrer">Jianhua Xu</a><sup>4</sup>,</span>
+            <span class="author-block"><a href="https://myownskyw7.github.io/" target="_blank" rel="noopener noreferrer">Jiaqi Wang</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://www.yukaicheng.cn/" target="_blank" rel="noopener noreferrer">Kaicheng Yu</a><sup>1,2,3</sup></span>
+          </div>
 
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
+          <div class="publication-affiliations">
+            <span><sup>1</sup>Zhejiang University</span>
+            <span><sup>2</sup>Shanghai Innovation Institute</span>
+            <span><sup>3</sup>Westlake University</span>
+            <span><sup>4</sup>Baichuan Inc.</span>
+            <span><sup>5</sup>Peking University</span>
+            <span><sup>6</sup>Xiaomi EV</span>
+          </div>
 
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
+          <p class="publication-note">Jianhua Xu and Jiaqi Wang are corresponding authors. Jianhua Xu is the project leader.</p>
 
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
+          <div class="publication-links">
+            <span class="link-block">
+              <a href="iclr2026/iclr2026_conference.pdf" target="_blank" class="external-link button is-rounded is-dark">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="#results" class="external-link button is-rounded is-dark is-outlined-light">
+                <span class="icon"><i class="fas fa-chart-line"></i></span>
+                <span>Results</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="#paper" class="external-link button is-rounded is-dark is-outlined-light">
+                <span class="icon"><i class="fas fa-scroll"></i></span>
+                <span>Paper Preview</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="#BibTeX" class="external-link button is-rounded is-dark is-outlined-light">
+                <span class="icon"><i class="fas fa-quote-right"></i></span>
+                <span>BibTeX</span>
+              </a>
+            </span>
+          </div>
 
-                <!-- TODO: Update with your arXiv paper ID -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
+          <div class="hero-summary">
+            <div class="stat-card">
+              <div class="stat-value">0.25</div>
+              <div class="stat-label">rFID with SigLIP-So/14-384</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">82.0%</div>
+              <div class="stat-label">ImageNet zero-shot accuracy</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">+5.8</div>
+              <div class="stat-label">Average gain over VILA-U on 10 understanding benchmarks</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">+13%</div>
+              <div class="stat-label">Improvement on GenAI-Bench</div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
+    <section class="section teaser-section">
+      <div class="container is-max-desktop">
+        <div class="figure-shell standout-shell">
+          <img src="static/images/teaser.png" alt="DualToken teaser figure showing better reconstruction and understanding with dual visual vocabularies" loading="eager">
+        </div>
+        <p class="figure-caption">
+          DualToken separates visual appearance and semantics into two complementary vocabularies: pixel tokens preserve fine-grained details for generation, while semantic tokens retain language-aligned abstractions for understanding.
+        </p>
+      </div>
+    </section>
 
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
+    <section class="section section-soft" id="abstract">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 section-title">Abstract</h2>
+        <div class="content section-copy">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            The differing representation spaces required for visual understanding and generation pose a central challenge for unified autoregressive multimodal models. Tokenizers optimized for reconstruction preserve low-level appearance but lack language-aligned semantics, while contrastively trained vision encoders offer strong semantics yet cannot be decoded faithfully back to pixels.
+          </p>
+          <p>
+            DualToken bridges this gap by introducing dual visual vocabularies inside a single tokenizer: a pixel codebook for low-level appearance and a semantic codebook for high-level meaning. Rather than forcing one codebook to satisfy conflicting objectives, DualToken disentangles them hierarchically across shallow and deep transformer layers, enabling strong performance on both sides. The resulting tokenizer achieves 0.25 rFID and 82.0% zero-shot ImageNet accuracy, and the unified multimodal model outperforms VILA-U on both understanding and generation benchmarks.
           </p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
+    </section>
 
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <section class="section" id="highlights">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 section-title">Why DualToken</h2>
+        <div class="grid-two">
+          <div class="insight-card">
+            <h3>One tokenizer, two visual vocabularies</h3>
+            <p>DualToken factorizes image representation into pixel tokens for reconstruction and semantic tokens for understanding, without increasing visual sequence length in the unified MLLM.</p>
+          </div>
+          <div class="insight-card">
+            <h3>Conflict resolved hierarchically</h3>
+            <p>Reconstruction supervision is applied to shallow layers, while semantic preservation is applied to deep layers, turning a destructive tradeoff into a complementary learning setup.</p>
+          </div>
+          <div class="insight-card">
+            <h3>Stronger than dual-encoder combinations</h3>
+            <p>Compared with directly combining a VQGAN-style encoder and a CLIP-style encoder, DualToken keeps both vocabularies inside a more compatible shared representation space.</p>
+          </div>
+          <div class="insight-card">
+            <h3>Better understanding and generation</h3>
+            <p>Pixel tokens improve downstream recognition of fine details, and semantic tokens improve autoregressive image generation by preserving semantic structure throughout decoding.</p>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
+    </section>
 
+    <section class="section section-soft" id="method">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 section-title">Method Overview</h2>
+        <div class="feature-layout">
+          <div class="feature-copy">
+            <span class="eyebrow">Motivation</span>
+            <h3>Understanding and generation demand different visual representations</h3>
+            <p>Directly optimizing one codebook for both semantic preservation and image reconstruction causes a strong objective conflict. In the paper, this appears as degraded semantic metrics and blurry, distorted reconstructions.</p>
+            <ul class="feature-list">
+              <li>Reconstruction-only tokenizers capture texture, color, and local structure but perform poorly in multimodal reasoning.</li>
+              <li>Language-aligned vision encoders preserve semantics but struggle to decode back into high-fidelity images.</li>
+              <li>DualToken disentangles these roles rather than collapsing them into one visual vocabulary.</li>
+            </ul>
+          </div>
+          <div class="figure-shell">
+            <img src="static/images/bubble.png" alt="Tradeoff plot comparing semantic and reconstruction quality across visual tokenizers" loading="lazy">
+          </div>
+        </div>
 
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
+        <div class="feature-layout reverse-layout">
+          <div class="figure-shell dark-shell">
+            <img src="static/images/tokenizer.png" alt="DualToken tokenizer framework showing hierarchical supervision and dual codebooks" loading="lazy" class="figure-focus-right">
+          </div>
+          <div class="feature-copy">
+            <span class="eyebrow">Tokenizer</span>
+            <h3>Hierarchical supervision yields dual codebooks</h3>
+            <p>DualToken analyzes the internal hierarchy of SigLIP and uses shallow features for reconstruction while preserving semantic alignment in deep features. Each feature stream is discretized with residual vector quantization to form its own visual vocabulary.</p>
+            <ul class="feature-list">
+              <li>Shallow-layer features are optimized for reconstruction and quantized into pixel tokens.</li>
+              <li>Deep-layer features are constrained by semantic preservation and quantized into semantic tokens.</li>
+              <li>The resulting tokenizer reaches both strong reconstruction fidelity and strong zero-shot semantics.</li>
+            </ul>
+          </div>
         </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
+
+        <div class="feature-layout">
+          <div class="feature-copy">
+            <span class="eyebrow">Unified MLLM</span>
+            <h3>Dual visual vocabularies are consumed by one autoregressive model</h3>
+            <p>Inside the unified model, pixel and semantic tokens are projected into the LLM hidden space and concatenated along the embedding dimension. This preserves sequence length while giving the language model access to both low-level detail and high-level meaning.</p>
+            <ul class="feature-list">
+              <li>Independent visual heads predict residual tokens for the pixel and semantic vocabularies.</li>
+              <li>Semantic tokens guide generation toward prompt-consistent structure.</li>
+              <li>Pixel tokens inject fine-grained detail that improves OCR, hallucination detection, and general VQA.</li>
+            </ul>
+          </div>
+          <div class="figure-shell dark-shell">
+            <img src="static/images/frameworks.png" alt="Framework comparison showing DualToken versus dual-encoder and unified alternatives" loading="lazy" class="figure-focus-right">
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
+    </section>
 
+    <section class="section" id="results">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 section-title">Key Results</h2>
+        <div class="results-grid">
+          <article class="result-card">
+            <h3>Tokenizer quality</h3>
+            <p><strong>0.25 rFID</strong>, <strong>28.69 PSNR</strong>, and <strong>0.744 SSIM</strong> with the SigLIP-So/14-384 backbone, while retaining <strong>82.0%</strong> zero-shot ImageNet accuracy.</p>
+          </article>
+          <article class="result-card">
+            <h3>Controlled LLaVA study</h3>
+            <p>Within the LLaVA-1.5 framework, DualToken improves the average score across ten understanding benchmarks from <strong>48.1</strong> for VILA-U to <strong>53.9</strong>.</p>
+          </article>
+          <article class="result-card">
+            <h3>Unified understanding</h3>
+            <p>DualToken-3B (384px) reaches <strong>76.2</strong> on MMBench, <strong>72.2</strong> on SEED, and <strong>1588.4</strong> on MME, competitive with much larger unified models.</p>
+          </article>
+          <article class="result-card">
+            <h3>Unified generation</h3>
+            <p>On GenAI-Bench advanced prompts, DualToken-3B improves the overall score from <strong>0.60</strong> for reproduced VILA-U 3B to <strong>0.68</strong>, and clearly outperforms the pixel-only ablation.</p>
+          </article>
+        </div>
 
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
+        <div class="figure-shell standout-shell">
+          <img src="static/images/gen_cases.png" alt="Generation examples comparing DualToken with VILA-U and pixel-only baselines" loading="lazy" class="figure-focus-right">
+        </div>
+        <p class="figure-caption">
+          Qualitative results from the paper show that DualToken generates sharper, more semantically faithful images than VILA-U and a pixel-only ablation, especially under long or compositional prompts.
+        </p>
       </div>
-    </div>
-  </section>
-<!--End paper poster -->
+    </section>
 
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
+    <section class="section section-soft" id="analysis">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 section-title">Analysis</h2>
+        <div class="grid-two">
+          <div class="analysis-card">
+            <h3>Why not combine two separate encoders?</h3>
+            <p>The paper shows that a naive dual-encoder design creates a large representational mismatch between low-level and semantic features. DualToken avoids this by learning both vocabularies within one compatible architecture.</p>
+          </div>
+          <div class="analysis-card">
+            <h3>Why do dual tokens help each other?</h3>
+            <p>Pixel tokens recover high-frequency visual clues that improve understanding, while semantic tokens act as positive semantic supervision during generation, producing outputs that better match the prompt.</p>
+          </div>
+        </div>
       </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
+    </section>
+
+    <section class="section" id="paper">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 section-title">Paper Preview</h2>
+        <div class="pdf-shell">
+          <iframe src="iclr2026/iclr2026_conference.pdf" title="DualToken paper PDF"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title is-3 section-title no-underline">BibTeX</h2>
+          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+            <i class="fas fa-copy"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+        <pre id="bibtex-code"><code>@inproceedings{song2026dualtoken,
+  title     = {DualToken: Towards Unifying Visual Understanding and Generation with Dual Visual Vocabularies},
+  author    = {Song, Wei and Wang, Yuran and Song, Zijia and Li, Yadong and Zhou, Zenan and Chen, Long and Xu, Jianhua and Wang, Jiaqi and Yu, Kaicheng},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2026},
+  url       = {https://songweii.github.io/dualtoken-project-page/}
 }</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
-        </div>
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          This page summarizes the ICLR 2026 paper <em>DualToken</em>. The website is based on the
+          <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener noreferrer">Academic Project Page Template</a>,
+          adapted from <a href="https://nerfies.github.io" target="_blank" rel="noopener noreferrer">Nerfies</a>.
+        </p>
       </div>
     </div>
-  </div>
-</footer>
-
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+  </footer>
+</body>
+</html>

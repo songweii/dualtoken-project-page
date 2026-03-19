@@ -1,0 +1,24 @@
+
+\begin{table}[t]
+  \centering
+  \caption{\textbf{Controlled comparison across ten visual understanding benchmarks}. We evaluate different vision encoders/tokenizers, including siglip-large-16-256, VILA-U, and \ours{} within the LLaVA-1.5 framework. MMB refers to MMBench-dev~\citep{liu2023mmbench}, OCRB to OCRBench~\citep{liu2024ocrbench}, and TVQA to TextVQA~\citep{textvqa}. The MME~\citep{fu2024mme} score is normalized based on its total score. \textit{Sem.+Pix.} is the original setting of DualToken, where semantic and pixel tokens are concated along embedding dimension to serve as visual input. \textit{Sem. only} means only the semantic tokens are fed as visual input.}  
+  \label{tab:llava}
+  \resizebox{\linewidth}{!}{
+  \tablestyle{3pt}{1.05}
+  \begin{tabular}{ll|l|llllllllll|l}
+  \toprule
+   &Vision Encoder            &Res.&MMB                   & MME                       &SEED                  &VQAv2                &MMVet  &AI2D&MMMU&POPE                 & OCRB&TVQA &AVG.\\
+  \midrule
+   (a)&siglip-large-16-256  &$256$&60.9 & 62.9&56.4&78.2&34.5&53.5&30.8&80.3& 26.3& 44.3&52.8\\
+  
+   (b)&VILA-U                    &$256$&55.3\basenum{(-5.6)}& 53.8\basenum{(-9.1)}&51.2\basenum{(-5.6)}&73.1\basenum{(-5.1)}&24.9\basenum{(-9.6)}&49.4\basenum{(-4.1)}&28.4\basenum{(-2.4)}&78.2\basenum{(-2.1)}& 23.8\basenum{(-2.5)}& 42.8\basenum{(-1.5)}&48.1\basenum{(-4.7)}\\
+  
+   \compare{}(c)&\compare{}\ours{} (sem. only)     &\compare{}$256$&\compare{}59.8\loss{(-1.1)}& \compare{}63.0\gain{(+0.1)}&\compare{}56.2\loss{(-0.2)}&\compare{}77.6\loss{(-0.6)}&\compare{}34.0\loss{(-0.5)}&\compare{}53.7\gain{(+0.2)}&\compare{}30.3\loss{(-0.5)}&\compare{}79.4\loss{(-0.9)}&\compare{24.6}\loss{(-1.7)}&\compare{43.2}\loss{(-1.1)}&\compare{}52.2\loss{(-0.6)}\\
+  
+   \compare{}(d)&\compare{}\ours{} (sem.+ pix.)     &\compare{}$256$&\compare{}61.3\gain{(+0.4)}& \compare{}64.6\gain{(+1.7)}&\compare{}57.2\gain{(+0.8)}&\compare{}77.0\loss{(-1.2)}&\compare{}34.6\gain{(+0.1)}&\compare{}55.9\gain{(+2.4)}&\compare{}30.2\loss{(-0.6)}&\compare{}83.0\gain{(+2.7)}&\compare{}29.2\gain{(+2.9)}&\compare{}46.2\gain{(+1.9)}&\compare{53.9}\gain{(+1.1)}\\
+  
+  \bottomrule
+  \end{tabular}
+  }
+  % \vspace{-8mm}
+\end{table}

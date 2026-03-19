@@ -1,0 +1,79 @@
+
+\begin{table}[t!]
+\setlength{\tabcolsep}{5.5pt}
+\centering
+\tablestyle{5pt}{1.1}
+\caption{Quantitative results on visual understanding and generation benchmarks. }
+\scalebox{0.69}{
+    \begin{NiceTabular}{llcccccccc}
+    \CodeBefore
+    \Body
+    \toprule
+    Type         &Method                                    &\# Params  &POPE  &MMBench &SEED &MMMU  &MMVet &MathVista &MME\\
+    \midrule
+                 &InstructBLIP \citep{instructblip}         &7B             &-     &36.0    &58.8  &30.6 &26.2  &24.4      &1137.1\\
+                 &LLaVA-Phi \citep{zhu2024llavaphi}         &2.7B           &85.0  &59.8    &-     &-    &28.9  &-         &1335.1\\
+                 &LLaVA-1.5 \citep{liu2024llava1d5}         &7B             &85.9  &64.3    &58.6  &35.4 &31.1  &27.4      &1510.7\\
+    \textit{Und.}&LLaVA-NeXT \citep{liu2024llavanext}       &7B             &86.5  &67.4    &70.2  &35.8 &43.9  &34.6      &1519.0\\
+                 &\g{LLaVA-NeXT} \citep{liu2024llavanext}       &\g{34B}            &\g{87.7}  &{79.3}    &{75.9}  &\g{51.1} &\g{57.4}  &\g{46.5}      &\g{1631.0}\\
+                 &ShareGPT4V \citep{chen2024sharegpt4v}     &7B             &-     &68.8    &69.7  &37.2 &37.6  &26.5      &1567.4\\
+                 &VILA \citep{lin2024vila}                  &7B             &85.5  &68.9    &61.1  &-    &34.9  &-         &1533.0\\
+    \midrule
+                 &\g{BAGAL} \citep{bagel}                   &\g{14B}        &\g{-}  &\g{85.0}    &\g{-}  &\g{55.3} &\g{67.2}  &\g{73.1}      &\g{1687.0}\\
+                 % &DreamLLM \citep{dong2024dreamllm}         &7B             &-     &58.2    &-     &-    &36.6  &-         &-\\
+                 % &SEEDLLaMA \citep{ge2023seedllama}         &7B             &-     &45.8    &51.5  &-    &-     &-         &-\\
+                 &Chameleon \citep{team2024chameleon}       &7B             &-     &31.1    &-     &22.4 &8.3   &-         &-\\
+                 &Emu3 \citep{wang2024emu3}                 &8B             &85.2  &58.5    &68.2  &31.6 &-     &-         &-\\
+                 &Show-o \citep{xie2024showo}               &1.5B           &73.8  &-       &-     &25.1 &-     &-         &948.4\\
+                 &Janus \citep{wu2024janus}                 &1.5B           &87.0  &69.4    &63.7  &30.5 &34.3  &-         &1338.0\\
+                 &Liquid \citep{liquid}                     &7B             &83.2  &-       &-     &-    &-     &-         &1448.0\\
+                 &MUSE-VL (256px) \citep{xie2025musevl}     &7B             &-     &72.1    &69.1  &39.7 &-     &51.3      &1480.9\\
+                 % &TokenFlow (256px) \citep{qu2024tokenflow} &13B            &85.0  &60.3    &62.6  &34.4 &27.7  &-         &1365.4\\
+    \textit{Uni.}&TokenFlow (384px) \citep{qu2024tokenflow} &13B            &86.8  &68.9    &68.7  &38.7 &40.7  &-         &1545.9\\
+                 % &TokLIP (384px) \citep{lin2025toklip}      &7B             &84.9  &76.9    &71.5  &47.1 &-     &-         &1496.6\\
+                 &UniTok (256px) \citep{unitok}             &7B             &83.2  &61.1    &-     &-    &33.9  &-         &1448.0\\
+                 &UniToken (384px) \citep{jiao2025unitoken} &7B             &-     &71.1    &69.9  &32.8 &-     &38.5      &-\\
+                 &Show-o2 (432px) \citep{xie2025showo2}     &1.5B           &-     &67.4    &65.6  &37.1 &-     &-         &1450.9\\
+                 &Show-o2 (432px) \citep{xie2025showo2}     &7B             &-     &79.3    &69.8  &48.9 &-     &-         &1620.5\\
+                 &VILA-U \citep{wu2025vilau}                &7B             &85.8  &-       &59.0  &-    &33.5  &-         &1401.8\\
+    \compare{}&\compare{}\ours{}-3B (256px) &\compare{}3B   &\compare{}86.0 &\compare{}70.9 &\compare{}70.2 &\compare{}38.6 &\compare{}32.5 &\compare{}46.5 &\compare{}1489.2\\
+    \compare{}&\compare{}\ours{}-3B (384px) &\compare{}3B   &\compare{}88.1 &\compare{}76.2 &\compare{}72.2 &\compare{}40.3 &\compare{}40.2 &\compare{}49.2 &\compare{}1588.4\\
+    \compare{}&\compare{}\ours{}-7B (256px) &\compare{}7B   &\compare{}88.6 &\compare{}74.9 &\compare{}71.8 &\compare{}45.8 &\compare{}40.5 &\compare{}55.8 &\compare{}1502.7\\
+    \compare{}&\compare{}\ours{}-7B (384px) &\compare{}7B   &\compare{}89.4 &\compare{}80.0 &\compare{}72.5 &\compare{}47.4 &\compare{}44.3 &\compare{}57.6 &\compare{}1625.0\\
+    \bottomrule
+    \end{NiceTabular}}\\
+    \vspace{1mm}
+    (a) Evaluation on multimodal understanding benchmarks. \\
+    \vspace{1mm}
+\scalebox{0.72}{
+    \begin{NiceTabular}{clccccccc}
+    \CodeBefore
+    \Body
+    \toprule
+    \multirow{2}{*}{{Type}} &\multirow{2}{*}{{Method}} & \multirow{2}{*}{{Architecture}} & 
+    \multirow{2}{*}{Count{$\uparrow$}} & \multirow{2}{*}{Differ{$\uparrow$}} & \multirow{2}{*}{Compare{$\uparrow$}} & \multicolumn{2}{c}{Logical{$\uparrow$}} & \multirow{2}{*}{Overall{$\uparrow$}}   \\
+    \cmidrule{7-8}
+    &  &  & & &  & Negate & Universal   \\
+    \midrule
+    % &SD v2.1 \citep{latentdiffusion} & Diffusion & 0.68 & 0.70 & 0.68 & 0.54 & 0.64 & 0.62 \\
+    &SD-XL \citep{sdxl} & Diffusion & 0.71 & 0.73 & 0.69 & 0.50 & 0.66 & 0.63 \\
+    \textit{Gen.} &Midjourney v6 \citep{midjourney} & Diffusion & 0.78 & 0.78 & 0.79 & 0.50 & 0.76 & 0.69 \\
+    &DALL-E 3 \citep{dalle3} & Diffusion & 0.82 & 0.78 & 0.82 & 0.48 & 0.80 & 0.70 \\
+    \midrule
+    &Show-o \citep{xie2024showo} & Discrete Diff. & 0.70  & 0.62 & 0.71 & 0.51 & 0.65 & 0.60 \\
+    &ILLUME \citep{wang2024illume} & AR+Diff. & 0.66  & 0.68 &  0.67 & 0.49 & 0.63 & 0.60 \\
+    &LWM \citep{lwm} & Autoregressive & 0.59 & 0.58 & 0.54 & 0.49 & 0.52 & 0.53 \\
+    &Liquid~\citep{liquid} & Autoregressive & 0.76 & 0.73 & 0.74 & 0.46 & 0.74 & 0.65 \\
+    \textit{Uni.} &UniTok~\citep{unitok} & Autoregressive & 0.76 & 0.76 & 0.79 & 0.46 & 0.73 & 0.67 \\
+    &VILA-U~\citep{wu2025vilau} & Autoregressive & 0.70 & 0.71 & 0.74 & 0.53 & 0.66 & 0.64 \\
+    \compare{}&\compare{}VILA-U 3B (256) & \compare{}Autoregressive & \compare{}0.68 & \compare{}0.66 & \compare{}0.70 & \compare{}0.49 & \compare{}0.64 & \compare{}0.60 \\
+    \compare{}&\compare{}DualToken-3B (256) & \compare{}Autoregressive & \compare{}0.76 & \compare{}0.76 & \compare{}0.78 & \compare{}0.50 & \compare{}0.72 & \compare{}0.68 \\
+    \midrule
+    \baseline{}&\baseline{}DualToken-3B (pix. only) &\baseline{}Autoregressive & \baseline{}0.59 &\baseline{}0.59 &\baseline{}0.59 &\baseline{}0.47 & \baseline{}0.59 &\baseline{}0.55 \\
+    \bottomrule
+    \end{NiceTabular}} \\
+    \vspace{1mm}
+     (b) VQAScores on \textit{advanced} prompts of GenAI-Bench~\citep{GenAI-Bench}
+    \vspace{-10pt}
+\label{tab:main}
+\end{table}

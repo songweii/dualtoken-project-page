@@ -1,0 +1,61 @@
+%
+% --- inline annotations
+%
+\newcommand{\red}[1]{{\color{red}#1}}
+\newcommand{\todo}[1]{{\color{red}#1}}
+\newcommand{\TODO}[1]{\textbf{\color{red}[TODO: #1]}}
+% --- disable by uncommenting  
+% \renewcommand{\TODO}[1]{}
+% \renewcommand{\todo}[1]{#1}
+
+\usepackage{multirow}
+% \usepackage{xcolor,colortbl}
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{colortbl}
+
+\definecolor{lavendergray}{rgb}{0.77, 0.76, 0.82}
+\definecolor{lightgray}{rgb}{0.83, 0.83, 0.83}
+\newcommand{\default}[1]{{\cellcolor{lightgray}#1}}
+\newcommand{\compare}[1]{{\cellcolor{Gray}#1}}
+\newcommand{\baseline}[1]{{\cellcolor{lightgray}#1}}
+
+\usepackage{array}
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+\newcommand{\tablestyle}[2]{\setlength{\tabcolsep}{#1}\renewcommand{\arraystretch}{#2}\centering\small}
+
+\newcommand{\myparagraph}[1]{\vspace{0pt}\noindent{\bf #1}}
+
+\usepackage{amssymb}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\newcommand{\higherbetter}{$^\uparrow$}
+\newcommand{\lowerbetter}{~$^\downarrow$}
+
+
+\usepackage{wrapfig}
+
+\definecolor{myblue}{rgb}{0.11764705882352941, 0.5647058823529412, 1.0}
+\definecolor{Gray}{gray}{0.9}
+\definecolor{darkgreen}{rgb}{0.545, 0.749, 0.608}
+\newcommand{\gain}[1]{{\color{darkgreen}\scriptsize\textbf{#1}}}
+\newcommand{\loss}[1]{{\color{myblue}\scriptsize\textbf{#1}}}
+\newcommand{\basenum}[1]{{\color{gray}\scriptsize\textbf{#1}}}
+\newcommand{\g}[1]{\textcolor{gray}{#1}}
+
+\usepackage{tablefootnote}
+
+\usepackage{soul}
+\sethlcolor{Gray}
+
+\newif\ifdraft
+% \draftfalse
+\drafttrue
+
+\newcommand{\ky}[1]{\ifdraft \textcolor{purple}{#1} \else {#1}\fi}
+\newcommand{\KY}[1]{\ifdraft {\color{purple}{\bf #1}} \else {}\fi}
+
+\newcommand{\sw}[1]{\ifdraft \textcolor{blue}{#1} \else {#1}\fi}
+\newcommand{\SW}[1]{\ifdraft {\color{blue}{\bf #1}} \else {}\fi}

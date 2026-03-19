@@ -1,0 +1,19 @@
+\section{Related Works}
+\label{related}
+
+\textbf{Unified Multimodal Models}\quad
+A classic strategy for integrating visual understanding and generation within a single MLLM is to externally connect an LLM with a Diffusion Model~\citep{sun2024Emu2,dong2024dreamllm,metaquery,blip3o}. However, pure AR architectures offer a more elegant, fully end-to-end solution by unifying both tasks within the same autoregressive framework.
+Representative works like Chameleon~\citep{yu2023CM3leon,team2024chameleon} and Emu3~\citep{wang2024emu3}, have demonstrated the feasibility of jointly modeling vision and language through a unified next-token prediction objective. Specifically, visual inputs are first tokenized into visual tokens. These visual tokens are then interleaved with text tokens to construct a multimodal sequence.
+However, these pure AR architectures introduce generative capabilities at the cost of considerably weaker visual understanding. An empirical explanation for this~\citep{wu2025vilau,xie2025musevl} is that their vision tokenizers are trained solely for reconstruction and thus primarily captures low-level visual details for generation rather than the high-level semantics required for vision–language understanding.
+% Therefore, improving the vision–language understanding performance of AR-based models necessitates a vision tokenizer that can effectively capture both low-level details for generation and high-level semantics for understanding.
+
+A straightforward way to bypass such a conflict is to employ two heterogeneous vision encoders~\citep{wu2024janus,chen2025januspro,deng2025bagel}: a semantic tokenizer (\eg CLIP) for understanding and a reconstruction-based tokenizer (\eg VQ-VAE) for generation. Yet this design inevitably adds extra modules and structural complexity, making understanding and generation two loosely coupled systems with distinct pathways rather than a truly unified model.
+In contrast, the text modality relies on a single tokenizer (\eg, BPE)~\citep{sennrich2015bpe} that discretizes text into a unified token space. This ensures a consistent input–output space: the input tokens that provide signals for understanding and the output tokens produced during generation share the same vocabulary.
+This unified design allows LLMs to seamlessly integrate text understanding and generation within the next-token prediction paradigm, thereby supporting broad generalization across diverse linguistic tasks.
+Therefore, the visual modality urgently requires a tokenizer that, like text tokenizers, can support both understanding and generation within a unified, coherent token space.
+
+\textbf{Unified Visual Tokenizers}\quad
+Recent research has actively explored solutions in this direction. VILA-U~\citep{wu2025vilau} and MUSE-VL~\citep{xie2025musevl} strive to build a unified tokenizer by jointly training on both reconstruction and semantic objectives.
+However, due to the inherent disparity between semantic and texture features, they struggle to strike an optimal balance between the two objectives, resulting in subpar performance in both tasks.
+As discussed in FQGAN~\citep{bai2024fqgan}, decomposing the codebook in a divide-and-conquer manner may offer a more fundamental solution to this conflict.
+TokenFlow~\citep{qu2024tokenflow} employs separate codebooks with a shared-mapping mechanism. However, key differences set our approach apart: (i) TokenFlow relies on distinct vision towers to extract semantic and low-level features, rather than leveraging a unified architecture; (ii) the shared IDs obtained through the shared-mapping mechanism may not be the optimal matches for either semantics or texture, potentially introducing additional losses in both domains.
