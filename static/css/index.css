@@ -113,7 +113,6 @@ a {
   font-size: clamp(2.2rem, 4.3vw, 3.7rem) !important;
   /* line-height: 1.02 !important; */
   line-height: 1.05 !important;
-  /* letter-spacing: -0.04em; */
   letter-spacing: -0.04em;
   color: #ffffff !important;
 }
@@ -127,7 +126,7 @@ a {
 .publication-authors a {
   color: #9dd1ff;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
   transition: color var(--transition);
 }
 
