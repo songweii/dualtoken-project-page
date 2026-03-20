@@ -88,10 +88,10 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.45rem 0.9rem;
+  padding: 0.5rem 1rem;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -118,7 +118,7 @@ a {
 
 .publication-authors {
   margin-bottom: 1rem;
-  font-size: 1.16rem;
+  font-size: 1.24rem;
   line-height: 1.7;
 }
 
@@ -143,7 +143,7 @@ a {
   flex-wrap: wrap;
   gap: 0.6rem 1.2rem;
   color: #c4d5ea;
-  font-size: 1rem;
+  font-size: 1.08rem;
 }
 
 .publication-note {
