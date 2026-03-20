@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>DualToken logo</title>
+  <desc>Minimal symmetric DualToken logo composed of two back-to-back T shapes with transparent background.</desc>
+
+  <!-- Left T -->
+  <path d="M135 118H250V358H226L191 323V186H135V118Z" fill="#1F66C2"/>
+
+  <!-- Right T -->
+  <path d="M377 118H262V358H286L321 323V186H377V118Z" fill="#F58A1F"/>
+</svg>
