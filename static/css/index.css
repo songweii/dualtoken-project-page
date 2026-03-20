@@ -125,7 +125,7 @@ a {
 .publication-authors a {
   color: #9dd1ff;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   transition: color var(--transition);
 }
 
